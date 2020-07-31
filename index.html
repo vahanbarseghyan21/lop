@@ -5,15 +5,15 @@
       var verifyCallback = function(response) {
         alert(response);
       };
-      var onloadCallback = function() {
-        // Renders the HTML element with id 'example1' as a reCAPTCHA widget.
-        // The id of the reCAPTCHA widget is assigned to 'widgetId1'.
-        grecaptcha.render('example3', {
-          'sitekey' : 'your_site_key',
-          'callback' : verifyCallback,
-          'theme' : 'dark'
-        });
-      };
+      // var onloadCallback = function() {
+      //   // Renders the HTML element with id 'example1' as a reCAPTCHA widget.
+      //   // The id of the reCAPTCHA widget is assigned to 'widgetId1'.
+      //   grecaptcha.render('example3', {
+      //     'sitekey' : 'your_site_key',
+      //     'callback' : verifyCallback,
+      //     'theme' : 'dark'
+      //   });
+      // };
     </script>
   </head>
   <body>
@@ -32,6 +32,16 @@
      document.getElementById("demo-form").submit();
    }
  </script>
+ <script>
+      function onClick(e) {
+        e.preventDefault();
+        grecaptcha.ready(function() {
+          grecaptcha.execute('6LeVkrgZAAAAACbmJDjwrdEdsX-hm0wGaYa1EtFz', {action: 'submit'}).then(function(token) {
+              // Add your logic to submit to your backend server here.
+          });
+        });
+      }
+  </script>
      <script src="https://www.google.com/recaptcha/api.js"></script>
      <script src="https://www.google.com/recaptcha/api.js?render=6LeVkrgZAAAAAEWHdbE53_MpV5q54ajwvPuv-EFB"></script>
   </body>
